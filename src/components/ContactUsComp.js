@@ -10,7 +10,7 @@ import {
 
 export const ContactUsComp = () => {
   return (
-    <div class="grid grid-cols-2 gap-2">
+    <div className="grid grid-cols-2 gap-2">
       <div className="flex justify-center h-14">
         <div className="flex items-center">
           <BiPhoneCall size={20} />

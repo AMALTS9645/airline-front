@@ -1,15 +1,16 @@
 import React from "react";
 import { ButtonYellowComp } from "./ButtonYellowComp";
+import planeImg from "../assets/Aeroplane.png"
 
 export const ProfessionalExpComp = () => {
   return (
     <div className="h-[80%] px-20 py-[140px] my-[50px]">
-      <div class="grid grid-cols-2 gap-5 h-[90%]">
+      <div className="grid grid-cols-2 gap-5 h-[90%]">
         <div className="flex justify-center">
           <div
             className="bg-contain w-[250px] h-[350px] rounded"
             style={{
-              backgroundImage: `url("https://images.pexels.com/photos/17291197/pexels-photo-17291197/free-photo-of-travelers-waiting-on-boarding-at-airport.jpeg")`,
+              backgroundImage: `url(${planeImg})`,
             }}
           ></div>
         </div>

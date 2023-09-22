@@ -2,7 +2,7 @@ import React from "react";
 
 export const HeaderNavComp = () => {
   return (
-    <div className="grid grid-cols-4 gap-2">
+    <div className="grid grid-cols-4 gap-2 bg-blue-400">
       <div className="flex justify-center col-span-1 p-5 items-center">
         <div>
           <p className="text-3xl font-bold text-white">SkyWing</p>

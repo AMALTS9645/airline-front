@@ -9,7 +9,7 @@ import {
 export const FooterComp = () => {
   return (
     <div className="h-[50%] px-20 py-5 bg-slate-600">
-      <div class="grid grid-cols-4 gap-10 text-white h-[80%]">
+      <div className="grid grid-cols-4 gap-10 text-white h-[80%]">
         <div>
           <p className="text-2xl font-bold">SkyWing</p>
           <p className="text-sm">BUDGET</p>

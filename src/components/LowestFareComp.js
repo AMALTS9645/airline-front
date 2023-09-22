@@ -23,7 +23,7 @@ export const LowestFareComp = () => {
               <p className="mt-2 font-semibold">{item.heading}</p>
               <p className="text-sm">
                 <span className="text-gray-400">Starting from</span>{" "}
-                <spn className="text-red-400 font-semibold">{item.price}</spn>
+                <span className="text-red-400 font-semibold">{item.price}</span>
               </p>
               <ButtonYellowComp label={"CHECK OUT NOW"} extraStyle={"mt-5"} />
             </div>
