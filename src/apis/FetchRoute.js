@@ -28,15 +28,13 @@ export async function getData(data) {
 
 
 
-export async function gerRecommendation(data) {
+export async function getRecommendation(data) {
   let response = await axios.post("http://localhost:8000/airport/autocomplete", data);
 
-  if (response.ok) {
-    let data = await response.json();
+  if (response.status === 200) {
+    // console.log(data);
 
-    console.log(data);
-
-    return Promise.resolve(data);
+    return Promise.resolve(response);
   } else {
     console.log(response);
 

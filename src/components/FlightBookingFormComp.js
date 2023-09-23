@@ -1,11 +1,13 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { InputTextComp } from "./InputTextComp";
 import { IoIosAirplane } from "react-icons/io";
 import { SlCalender } from "react-icons/sl";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { getData, gerRecommendation } from "../apis/FetchRoute";
+import { getData, getRecommendation } from "../apis/FetchRoute";
 import { useNavigate } from "react-router-dom";
+import RecommendationComponent from "./RecommendationComponent";
+import VirtualizedListArr from "./VirtualizedListArr";
 
 export const FlightBookingFormComp = () => {
   const [way, setWay] = useState("oneway");
@@ -15,6 +17,12 @@ export const FlightBookingFormComp = () => {
   const [selectedDateTwo, setSelectedDateTwo] = useState(null);
   const [data, setData] = useState([]);
   const [recommend, setRecommend] = useState([]);
+  const [recommendArr, setRecommendArr] = useState([]);
+  const [depList, setDepList] = useState(true);
+  const [arrList, setArrList] = useState(true);
+  const [depFromClick, setdepFromClick] = useState("");
+  const [arrFromClick, setarrFromClick] = useState("");
+
   const navigate = useNavigate();
 
   function formatDateToYYYYMMDD(dateString) {
@@ -28,36 +36,74 @@ export const FlightBookingFormComp = () => {
   }
 
   const fetchDetails = () => {
-    const body = {
-      iatafrom: dep,
-      iatato: arr,
-      dateoftravel: formatDateToYYYYMMDD(selectedDate),
-      class_business: 0,
-      class_economy: 1,
-      class_first: 0,
-    };
-
-    getData(body)
-      .then((response) => setData(response.data()))
-      .catch((response) => console.log(response));
-
-    navigate("/lists", {
-      state: { data },
-    });
+    // const body = {
+    //   iatafrom: dep,
+    //   iatato: arr,
+    //   dateoftravel: formatDateToYYYYMMDD(selectedDate),
+    //   class_business: 0,
+    //   class_economy: 1,
+    //   class_first: 0,
+    // };
+    // getData(body)
+    //   .then((response) => setData(response.data()))
+    //   .catch((response) => console.log(response));
+    // navigate("/lists", {
+    //   state: { data },
+    // });
   };
 
-  const getrecommendationDetails = (value) => {
-    setDep(value);
+  // Recommendation-Fetch-Departure________________________________________________________________________
+  const handleSetDepFromClick = (val) => {
+    setdepFromClick(val);
+  };
+
+  const handleSetDeparture = (e) => {
+    setDep(e.target.value);
+    setDepList(true);
+  };
+
+  useEffect(() => {
     const body = {
       search_string: dep,
       limit: 10,
     };
 
-    gerRecommendation(body)
-      .then((response) => setRecommend(response.data()))
+    getRecommendation(body)
+      .then((response) => {
+        setRecommend(response.data);
+      })
       .catch((response) => console.log(response));
-    console.log(recommend);
+  }, [dep]);
+
+  useEffect(() => {
+    setDep(depFromClick);
+  }, [depFromClick]);
+
+  // Recommendation-Fetch-Arrival________________________________________________________________________
+  const handleSetArrivalFromClick = (val) => {
+    setarrFromClick(val);
   };
+
+  const handleSetArrival = (e) => {
+    setArr(e.target.value);
+    setArrList(true);
+  };
+
+  useEffect(() => {
+    const body = {
+      search_string: arr,
+      limit: 10,
+    };
+    getRecommendation(body)
+      .then((response) => {
+        setRecommendArr(response.data);
+      })
+      .catch((response) => console.log(response));
+  }, [arr]);
+
+  useEffect(() => {
+    setArr(arrFromClick);
+  }, [arrFromClick]);
 
   return (
     <div className="bg-white bg-opacity-70 w-[99%] rounded-3xl absolute bottom-12 shadow shadow-gray-300">
@@ -90,37 +136,61 @@ export const FlightBookingFormComp = () => {
           <p className="text-sm ml-3 text-yellow-400">Round Trip</p>
         </div>
       </div>
-      <div className="p-5 flex ">
-        <div
-          className={`flex w-[300px] rounded border border-gray-300 px-3 py-3 mt-2`}
-        >
-          <div className="border-r-gray-300 border-r-[1px] pr-4 rounded-sm">
-            <IoIosAirplane />
+      <div className="p-5 flex justify-around">
+        <div className="relative">
+          <div
+            className={`flex w-[270px] rounded border border-gray-300 px-3 py-3 mt-2 flex justify-center items-center gap-2`}
+          >
+            <div className="border-r-gray-300 border-r-[1px] pr-4 rounded-sm">
+              <IoIosAirplane />
+            </div>
+            <input
+              className="ml-3 w-[300px] outline-none border-none text-sm w-full rounded p-2"
+              placeholder="Enter Boarding Point"
+              value={dep}
+              onChange={(e) => handleSetDeparture(e)}
+            />
+            <p className="text-sm text-yellow-600">From</p>
           </div>
-          <input
-            className="ml-3 w-[300px] outline-none border-none text-sm w-full"
-            placeholder="Enter Boarding Point"
-            onChange={e=>getrecommendationDetails(e.target.value)}
-          />
-          <p className="text-sm text-yellow-600">From</p>
+          {dep.length > 0 && depList && (
+            <div className="absolute">
+              <RecommendationComponent
+                recommendations={recommend}
+                setDepList={setDepList}
+                handleSetDepFromClick={handleSetDepFromClick}
+              />
+            </div>
+          )}
+        </div>
+
+        <div className="relative">
+          <div
+            className={`flex w-[300px] rounded border border-gray-300 px-3 py-3 mt-2 flex justify-center items-center gap-2`}
+          >
+            <div className="border-r-gray-300 border-r-[1px] pr-4 rounded-sm">
+              <IoIosAirplane />
+            </div>
+            <input
+              className="ml-3 w-[300px] outline-none border-none text-sm w-full rounded p-2"
+              placeholder="Enter Boarding Point"
+              value={arr}
+              onChange={(e) => handleSetArrival(e)}
+            />
+            <p className="text-sm text-yellow-600">To</p>
+          </div>
+          {arr.length > 0 && arrList && (
+            <div className="absolute">
+              <VirtualizedListArr
+                recommendations={recommendArr}
+                setArrList={setArrList}
+                handleSetArrivalFromClick={handleSetArrivalFromClick}
+              />
+            </div>
+          )}
         </div>
 
         <div
-          className={`flex w-[300px] rounded border border-gray-300 px-3 py-3 mt-2`}
-        >
-          <div className="border-r-gray-300 border-r-[1px] pr-4 rounded-sm">
-            <IoIosAirplane />
-          </div>
-          <input
-            className="ml-3 w-[300px] outline-none border-none text-sm w-full"
-            placeholder="Enter Destination"
-            onChange={""}
-          />
-          <p className="text-sm text-yellow-600">To</p>
-        </div>
-
-        <div
-          className={`flex w-[300px] rounded border border-gray-300 px-3 py-3 mt-2`}
+          className={`flex w-[310px] rounded border border-gray-300 px-3 py-3 mt-2 flex justify-center items-center gap-1`}
         >
           <div className="border-r-gray-300 border-r-[1px] pr-4 rounded-sm">
             <SlCalender />
@@ -129,24 +199,27 @@ export const FlightBookingFormComp = () => {
             selected={selectedDate}
             onChange={(date) => setSelectedDate(date)}
             dateFormat="yyyy-MM-dd"
+            className="rounded p-2"
           />
           <p className="text-sm text-yellow-600">Departure</p>
         </div>
+        {way === "roundway" && (
+          <div
+            className={`flex w-[300px] rounded border border-gray-300 px-3 py-3 mt-2 flex justify-center items-center gap-2`}
+          >
+            <div className="border-r-gray-300 border-r-[1px] pr-4 rounded-sm">
+              <SlCalender />
+            </div>
 
-        <div
-          className={`flex w-[300px] rounded border border-gray-300 px-3 py-3 mt-2`}
-        >
-          <div className="border-r-gray-300 border-r-[1px] pr-4 rounded-sm">
-            <SlCalender />
+            <DatePicker
+              selected={selectedDateTwo}
+              onChange={(date) => setSelectedDateTwo(date)}
+              dateFormat="yyyy-MM-dd"
+              className="rounded p-2"
+            />
+            <p className="text-sm text-yellow-600">Return</p>
           </div>
-
-          <DatePicker
-            selected={selectedDateTwo}
-            onChange={(date) => setSelectedDateTwo(date)}
-            dateFormat="yyyy-MM-dd"
-          />
-          <p className="text-sm text-yellow-600">Return</p>
-        </div>
+        )}
       </div>
       <div className="px-5 mt-5">
         <a href="#">
