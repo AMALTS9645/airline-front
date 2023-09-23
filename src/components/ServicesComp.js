@@ -3,7 +3,7 @@ import CoinImage from "../assets/coin.png";
 
 export const ServicesComp = () => {
   return (
-    <div className="h-[80%] px-20 py-20 mt-10">
+    <div className="h-[80%] px-20 py-20 mt-56">
       <div className="grid grid-cols-2 gap-2 h-[90%]">
         <div>
           <p className="text-sm">BEST CHOICE</p>

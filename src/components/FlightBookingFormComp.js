@@ -106,8 +106,8 @@ export const FlightBookingFormComp = () => {
   }, [arrFromClick]);
 
   return (
-    <div className="bg-white bg-opacity-70 w-[99%] rounded-3xl absolute bottom-12 shadow shadow-gray-300">
-      <div className="p-3">
+    <div className="bg-white bg-opacity-20 w-[99%] rounded-3xl absolute bottom-12 shadow shadow-gray-300]">
+      <div className="p-2">
         <p className="font-semibold">
           Book <span className="text-yellow-400">Flights</span>
         </p>
@@ -122,7 +122,7 @@ export const FlightBookingFormComp = () => {
             value="30"
             onClick={(e) => setWay("oneway")}
           />
-          <p className="text-sm ml-3">One Way</p>
+          <p className="text-sm ml-3 text-yellow-400">One Way</p>
         </div>
         <div className="flex ml-3">
           <input
@@ -136,21 +136,21 @@ export const FlightBookingFormComp = () => {
           <p className="text-sm ml-3 text-yellow-400">Round Trip</p>
         </div>
       </div>
-      <div className="p-5 flex justify-around">
+      <div className="p-3 flex justify-around">
         <div className="relative">
           <div
-            className={`flex w-[270px] rounded border border-gray-300 px-3 py-3 mt-2 flex justify-center items-center gap-2`}
+            className={`flex w-[270px] rounded border border-gray-300 px-3 flex justify-center items-center gap-2 bg-sky-900`}
           >
             <div className="border-r-gray-300 border-r-[1px] pr-4 rounded-sm">
               <IoIosAirplane />
             </div>
             <input
-              className="ml-3 w-[300px] outline-none border-none text-sm w-full rounded p-2"
+              className="ml-3 w-[300px] outline-none border-none text-sm w-full rounded p-2 bg-sky-800 text-white"
               placeholder="Enter Boarding Point"
               value={dep}
               onChange={(e) => handleSetDeparture(e)}
             />
-            <p className="text-sm text-yellow-600">From</p>
+            <p className="text-sm text-yellow-500">From</p>
           </div>
           {dep.length > 0 && depList && (
             <div className="absolute">
@@ -165,18 +165,18 @@ export const FlightBookingFormComp = () => {
 
         <div className="relative">
           <div
-            className={`flex w-[300px] rounded border border-gray-300 px-3 py-3 mt-2 flex justify-center items-center gap-2`}
+            className={`flex w-[300px] rounded border border-gray-300 px-3 flex justify-center items-center gap-2 bg-sky-900`}
           >
             <div className="border-r-gray-300 border-r-[1px] pr-4 rounded-sm">
               <IoIosAirplane />
             </div>
             <input
-              className="ml-3 w-[300px] outline-none border-none text-sm w-full rounded p-2"
+              className="ml-3 w-[300px] outline-none border-none text-sm w-full rounded p-2 bg-sky-800 text-white"
               placeholder="Enter Boarding Point"
               value={arr}
               onChange={(e) => handleSetArrival(e)}
             />
-            <p className="text-sm text-yellow-600">To</p>
+            <p className="text-sm text-yellow-500">To</p>
           </div>
           {arr.length > 0 && arrList && (
             <div className="absolute">
@@ -190,7 +190,7 @@ export const FlightBookingFormComp = () => {
         </div>
 
         <div
-          className={`flex w-[310px] rounded border border-gray-300 px-3 py-3 mt-2 flex justify-center items-center gap-1`}
+          className={`flex w-[310px] rounded border border-gray-300 px-3 flex justify-center items-center gap-1 bg-sky-900`}
         >
           <div className="border-r-gray-300 border-r-[1px] pr-4 rounded-sm">
             <SlCalender />
@@ -199,13 +199,14 @@ export const FlightBookingFormComp = () => {
             selected={selectedDate}
             onChange={(date) => setSelectedDate(date)}
             dateFormat="yyyy-MM-dd"
-            className="rounded p-2"
+            placeholderText="Select Date of Departure"
+            className="rounded bg-sky-800 text-white"
           />
-          <p className="text-sm text-yellow-600">Departure</p>
+          <p className="text-sm text-yellow-500">Departure</p>
         </div>
         {way === "roundway" && (
           <div
-            className={`flex w-[300px] rounded border border-gray-300 px-3 py-3 mt-2 flex justify-center items-center gap-2`}
+            className={`flex w-[300px] rounded border border-gray-300 px-3 flex justify-center items-center gap-2 bg-sky-900`}
           >
             <div className="border-r-gray-300 border-r-[1px] pr-4 rounded-sm">
               <SlCalender />
@@ -215,15 +216,16 @@ export const FlightBookingFormComp = () => {
               selected={selectedDateTwo}
               onChange={(date) => setSelectedDateTwo(date)}
               dateFormat="yyyy-MM-dd"
-              className="rounded p-2"
+              placeholderText="Select Date of Return"
+              className="rounded bg-sky-800 text-white"
             />
-            <p className="text-sm text-yellow-600">Return</p>
+            <p className="text-sm text-yellow-500">Return</p>
           </div>
         )}
       </div>
-      <div className="px-5 mt-5">
+      <div className="px-5 m-2 flex items-center justify-center">
         <a href="#">
-          <div className="py-2 px-5 bg-blue-500 text-sm rounded">
+          <div className="py-2 px-5 bg-blue-500 text-sm rounded w-[200px]">
             <p className="text-white text-center" onClick={fetchDetails}>
               FIND FLIGHTS
             </p>

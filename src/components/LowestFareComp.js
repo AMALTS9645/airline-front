@@ -9,7 +9,7 @@ export const LowestFareComp = () => {
       <p className="text-3xl mt-1 text-center text-white">
         Today's Lowest Fare
       </p>
-      <div className="flex absolute bottom-[-100px] ml-[9%]">
+      <div className="flex absolute bottom-[-100px] ml-[10%]">
         {LOWEST_FARE_LIST.map((item) => {
           return (
             <div

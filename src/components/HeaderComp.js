@@ -11,7 +11,9 @@ export const HeaderComp = () => {
       <HeaderNavComp />
       <div className="relative">
         <AutoPlay />
-        <FlightBookingFormComp />
+        <div className=" relative mt-8">
+          <FlightBookingFormComp />
+        </div>
       </div>
     </div>
   );
