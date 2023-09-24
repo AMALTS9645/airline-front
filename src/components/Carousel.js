@@ -27,7 +27,7 @@ export default class AutoPlay extends Component {
                 <p className="text-white text-xl">SkyWing</p>
                 <p className="text-white text-5xl">Wings of Convenience</p>
                 <p className="text-yellow-400 text-5xl">
-                  Professional, Experienced
+                  Change the Way you Travel
                 </p>
                 <p className="text-white text-sm mt-3">
                   <span className="text-yellow-400">SkyWing</span> is the
@@ -54,7 +54,7 @@ export default class AutoPlay extends Component {
                 <p className="text-white text-xl">SkyWing</p>
                 <p className="text-white text-5xl">Wings of Convenience</p>
                 <p className="text-yellow-400 text-5xl">
-                  Professional, Experienced
+                  Change the Way you Travel
                 </p>
                 <p className="text-white text-sm mt-3">
                   <span className="text-yellow-400">SkyWing</span> is the
@@ -81,7 +81,7 @@ export default class AutoPlay extends Component {
                 <p className="text-white text-xl">SkyWing</p>
                 <p className="text-white text-5xl">Wings of Convenience</p>
                 <p className="text-yellow-400 text-5xl">
-                  Professional, Experienced
+                  Change the Way you Travel
                 </p>
                 <p className="text-white text-sm mt-3">
                   <span className="text-yellow-400">SkyWing</span> is the
@@ -108,7 +108,7 @@ export default class AutoPlay extends Component {
                 <p className="text-white text-xl">SkyWing</p>
                 <p className="text-white text-5xl">Wings of Convenience</p>
                 <p className="text-yellow-400 text-5xl">
-                  Professional, Experienced
+                  Change the Way you Travel
                 </p>
                 <p className="text-white text-sm mt-3">
                   <span className="text-yellow-400">SkyWing</span> is the
@@ -135,7 +135,7 @@ export default class AutoPlay extends Component {
                 <p className="text-white text-xl">SkyWing</p>
                 <p className="text-white text-5xl">Wings of Convenience</p>
                 <p className="text-yellow-400 text-5xl">
-                  Professional, Experienced
+                  Change the Way you Travel
                 </p>
                 <p className="text-white text-sm mt-3">
                   <span className="text-yellow-400">SkyWing</span> is the
@@ -162,7 +162,7 @@ export default class AutoPlay extends Component {
                 <p className="text-white text-xl">SkyWing</p>
                 <p className="text-white text-5xl">Wings of Convenience</p>
                 <p className="text-yellow-400 text-5xl">
-                  Professional, Experienced
+                  Change the Way you Travel
                 </p>
                 <p className="text-white text-sm mt-3">
                   <span className="text-yellow-400">SkyWing</span> is the

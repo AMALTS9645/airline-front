@@ -1,22 +1,33 @@
-import axios from "axios"
+import axios from "axios";
 
 export async function getData(data) {
-  let response = await fetch("http://localhost:8000/recommendations", {
-    method: "POST",
+  let response = await axios.post(
+    "http://localhost:8000/recommendations",
+    data
+  );
 
-    body: JSON.stringify(data),
-
-    headers: {
-      "Content-type": "application/json; charset=UTF-8",
-    },
-  });
-
-  if (response.ok) {
-    let data = await response.json();
-
+  if (response.status === 200) {
     // console.log(data);
 
-    return Promise.resolve(data);
+    return Promise.resolve(response);
+  } else {
+    console.log(response);
+
+    return Promise.reject({
+      message: `Error ${response.status}`,
+    });
+  }
+}
+export async function getRoundData(data) {
+  let response = await axios.post(
+    "http://localhost:8000/multi_city_flight_recommendation",
+    data
+  );
+
+  if (response.status === 200) {
+    // console.log(data);
+
+    return Promise.resolve(response);
   } else {
     console.log(response);
 
@@ -26,10 +37,11 @@ export async function getData(data) {
   }
 }
 
-
-
 export async function getRecommendation(data) {
-  let response = await axios.post("http://localhost:8000/airport/autocomplete", data);
+  let response = await axios.post(
+    "http://localhost:8000/airport/autocomplete",
+    data
+  );
 
   if (response.status === 200) {
     // console.log(data);
