@@ -66,24 +66,32 @@ export default function BasicModalRound({ data }) {
           >
             <Box sx={modalContainerStyle}>
               <div className="flex justify-between">
-                <div style={leftPortionStyle}>
-                  <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                    From {dataItem[0].departure} To {dataItem[0].arrival}<br/>
-                    Date of Travel - {dataItem[0].date} 
-                  </Typography>
-                  {dataItem[0].results.map((item, index) => (
-                    <BasicCard item={item} key={index} />
-                  ))}
-                </div>
-                <div style={rightPortionStyle}>
-                  <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                  From {dataItem[1].departure} To {dataItem[1].arrival}<br/>
-                    Date of Travel - {dataItem[1].date} 
-                  </Typography>
-                  {dataItem[1].results.map((item, index) => (
-                    <BasicCard item={item} key={index} />
-                  ))}
-                </div>
+                {dataItem[0] && (
+                  <div style={leftPortionStyle}>
+                    <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+                      From {dataItem[0].departure} To {dataItem[0].arrival}
+                      <br />
+                      Date of Travel - {dataItem[0].date}
+                    </Typography>
+                    {dataItem[0].results &&
+                      dataItem[0].results.map((item, index) => (
+                        <BasicCard item={item} key={index} />
+                      ))}
+                  </div>
+                )}
+                {dataItem[1] && (
+                  <div style={rightPortionStyle}>
+                    <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+                      From {dataItem[1].departure} To {dataItem[1].arrival}
+                      <br />
+                      Date of Travel - {dataItem[1].date}
+                    </Typography>
+                    {dataItem[1].results &&
+                      dataItem[1].results.map((item, index) => (
+                        <BasicCard item={item} key={index} />
+                      ))}
+                  </div>
+                )}
               </div>
               <div className="fixed">
                 <AiFillCloseCircle
