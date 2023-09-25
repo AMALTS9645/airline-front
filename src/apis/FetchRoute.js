@@ -55,3 +55,22 @@ export async function getRecommendation(data) {
     });
   }
 }
+
+export async function getMultiCity(data) {
+  let response = await axios.post(
+    "http://localhost:8000/multi_city_flight_recommendation",
+    data
+  );
+
+  if (response.status === 200) {
+    // console.log(data);
+
+    return Promise.resolve(response);
+  } else {
+    console.log(response);
+
+    return Promise.reject({
+      message: `Error ${response.status}`,
+    });
+  }
+}

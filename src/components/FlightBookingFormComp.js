@@ -12,6 +12,7 @@ import VirtualizedListArr from "./VirtualizedListArr";
 import BasicModal from "./BasicModal";
 import FilledAlerts from "./BasicAlert";
 import BasicModalRound from "./BasicModalRound";
+import MultiCityModal from "./MultiCityModal";
 
 export const FlightBookingFormComp = () => {
   const [way, setWay] = useState("oneway");
@@ -43,6 +44,8 @@ export const FlightBookingFormComp = () => {
 
   const dateString = [formatDateToYYYYMMDD(selectedDate)];
 
+
+
   // round way ___________________________________________________________
 
   const fetchRoundDetails = () => {
@@ -72,6 +75,8 @@ export const FlightBookingFormComp = () => {
   // useEffect(() => {
   //   console.log(data);
   // }, [data]);
+
+  
   // one way ___________________________________________________________
 
   const fetchDetails = () => {
@@ -176,7 +181,20 @@ export const FlightBookingFormComp = () => {
           />
           <p className="text-sm ml-3 text-yellow-400">Round Trip</p>
         </div>
+        <div className="flex ml-3">
+          <input
+            className="text-white"
+            type="radio"
+            id="age1"
+            name="age"
+            value="30"
+            onClick={(e) => setWay("multicity")}
+          />
+          <MultiCityModal/>
+        </div>
       </div>
+
+
       <div className="p-3 flex justify-around">
         <div className="relative">
           <div
@@ -302,6 +320,18 @@ export const FlightBookingFormComp = () => {
           <a href="#">
             <div className="bg-blue-400 text-sm rounded">
               <p className="text-white text-center" onClick={fetchRoundDetails}>
+                <BasicModalRound data={roundData} />
+                {roundData.length === 0 && <FilledAlerts />}
+              </p>
+            </div>
+          </a>
+        </div>
+      )}
+      {way === "multicity" && (
+        <div className="px-5 m-2 flex items-center justify-center">
+          <a href="#">
+            <div className="bg-blue-400 text-sm rounded">
+              <p className="text-white text-center">
                 <BasicModalRound data={roundData} />
                 {roundData.length === 0 && <FilledAlerts />}
               </p>
