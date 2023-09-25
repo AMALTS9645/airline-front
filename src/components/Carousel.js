@@ -35,7 +35,7 @@ export default class AutoPlay extends Component {
                 </p>
                 <p className="text-white text-sm">
                   full services airline offering{" "}
-                  <span className="text-yellow-400">reduce fairs.</span>
+                  <span className="text-yellow-400">reduce fares.</span>
                 </p>
                 <ButtonYellowComp
                   label={"FIND FLIGHT"}
