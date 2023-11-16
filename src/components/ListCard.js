@@ -18,7 +18,7 @@ const bull = (
 export default function BasicCard({ item }) {
   console.log(item);
   return (
-    <Card sx={{ minWidth: 275 }}>
+    <Card sx={{ minWidth: 275 , marginBottom: 2}}>
       <CardContent>
         <Typography variant="h5" component="div">
           {item.iata_from} -------- {item.iata_to}

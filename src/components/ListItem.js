@@ -24,19 +24,23 @@ const style = {
 const leftPortionStyle = {
   flex: 1,
   padding: "0 16px",
+  
 };
 
 const rightPortionStyle = {
   flex: 1,
   padding: "0 16px",
+  
 };
 const leftDown = {
   flex: 1,
   padding: "0 16px",
+  
 };
 const rightDown = {
   flex: 1,
   padding: "0 16px",
+
 };
 
 export default function BasicModalCity({ data }) {
@@ -102,12 +106,12 @@ export default function BasicModalCity({ data }) {
               {dataItem[2] && (
                 <div style={leftDown}>
                   <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                    From {dataItem[1].departure} To {dataItem[1].arrival}
+                    From {dataItem[2].departure} To {dataItem[2].arrival}
                     <br />
-                    Date of Travel - {dataItem[1].date}
+                    Date of Travel - {dataItem[2].date}
                   </Typography>
-                  {dataItem[1].results &&
-                    dataItem[1].results.map((item, index) => (
+                  {dataItem[2].results &&
+                    dataItem[2].results.map((item, index) => (
                       <BasicCard item={item} key={index} />
                     ))}
                 </div>
@@ -115,12 +119,12 @@ export default function BasicModalCity({ data }) {
               {dataItem[3] && (
                 <div style={rightDown}>
                   <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                    From {dataItem[1].departure} To {dataItem[1].arrival}
+                    From {dataItem[3].departure} To {dataItem[3].arrival}
                     <br />
-                    Date of Travel - {dataItem[1].date}
+                    Date of Travel - {dataItem[3].date}
                   </Typography>
-                  {dataItem[1].results &&
-                    dataItem[1].results.map((item, index) => (
+                  {dataItem[3].results &&
+                    dataItem[3].results.map((item, index) => (
                       <BasicCard item={item} key={index} />
                     ))}
                 </div>
